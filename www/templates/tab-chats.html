@@ -1,0 +1,50 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <ion-list>
+      <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item> -->
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ng-repeat="place in places" ng-click="goToPlace(place.id)">
+        <img ng-src="img/ben.png">
+        <h2>{{ place.name }}</h2>
+        <p>{{ place.location.address }}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+<!-- 
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="img/adam.jpg">
+        <h2>Sushi Deluxe</h2>
+        <p>50 K St NE</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="img/max.png">
+        <h2>Sushi Japan</h2>
+        <p>75 K St NE</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item> -->
+
+
+    </ion-list>
+  </ion-content>
+</ion-view>

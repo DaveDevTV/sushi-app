@@ -1,0 +1,115 @@
+SushiApp Demo
+==========================
+
+Basic steps:
+1) install ionic & cordova
+2) create new project using sample tabs app
+3) make two tabs: Sushi Places & Profile
+4) make the list of nearby sushi places using Foursqure api(use 3-step design process)
+5) make it possible to favorite places using localStorage
+6) compile for android and prep for google play
+7) compile and open in xcode and prep for app store
+
+
+
+$ npm install -g cordova ionic
+$ ionic start SushiApp tabs
+$ cd SushiApp
+
+
+Some useful commands:
+$ ionic platform add ios
+$ ionic build ios
+$ ionic emulate ios
+
+
+
+
+Client id
+YOUR_CLIENT_ID
+Client secret
+YOUR_CLIENT_SECRET
+
+
+
+https://api.foursquare.com/v2/venues/search
+  ?client_id=YOUR_CLIENT_ID
+  &client_secret=YOUR_CLIENT_SECRET
+  &v=20130815
+  &ll=40.7,-74
+  &query=sushi
+
+
+
+https://api.foursquare.com/v2/venues/search?client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&v=20130815&ll=40.7,-74&query=sushi
+
+
+
+
+
+An Ionic-based cross-platform app
+
+```bash
+$ npm install -g cordova ionic gulp
+$ npm install
+$ gulp
+```
+
+If you see "Error: spawn EACCES" you may need to enable permissions on all project files:
+```bash
+$ sudo find . -type d -exec chmod -R 777 {} \;
+```
+(run from within project folder only)
+
+To run in the browser, open another shell:
+
+```bash
+$ ionic serve
+```
+
+To compile and run on iOS:
+
+```bash
+$ ionic platform add ios
+$ ionic build ios
+$ ionic emulate ios
+```
+
+To submit to iTunesConnect:
+1. Open project in xCode and make sure the app icons were manually placed in the correct wells.
+2. Archive project and upload to iTunesConnect
+3. Choose the uploaded build in iTunesConnect
+
+
+To compile and run on Android:
+
+```bash
+$ ionic platform add android
+$ ionic build android
+$ ionic run android
+```
+
+To sign android app for Google Play, follow the below steps (only run the keytool if there is no keystore file already).
+
+```bash
+$ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+$ cordova build --release android
+$ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore ./platforms/android/build/outputs/apk/android-release-unsigned.apk alias_name
+$ zipalign -v 4 ./platforms/android/build/outputs/apk/android-release-unsigned.apk ./dist/android-release.apk
+```
+
+For fresh work environments, after building ios, you still need to:
+
+1. Drap and drop the app icons into xcode
+2. Add the following to the *-info.plist:
+```
+<key>UIRequiresFullScreen</key>
+<true/>
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
+```
+
